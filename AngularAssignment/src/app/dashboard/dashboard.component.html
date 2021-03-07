@@ -1,0 +1,63 @@
+<div class="table-container col-md-12">
+  <div class="row create-btn-row">
+    <div class="search-container">
+      <mat-form-field class=" col-md-9">
+                <em class="fa fa-search" matPrefix aria-hidden="true"></em>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Search Name or Symbol" [(ngModel)]="searchValue">
+      </mat-form-field>
+    </div>
+  </div>
+  <table class="stock-table" mat-table [dataSource]="tableDataSource">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="exchangeName">
+      <th mat-header-cell *matHeaderCellDef> Exchange Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.exchangeName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sourceName">
+      <th mat-header-cell *matHeaderCellDef> Source Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.sourceName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="market">
+      <th mat-header-cell *matHeaderCellDef> Market </th>
+      <td mat-cell *matCellDef="let element"> {{element.market}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="marketChange">
+      <th mat-header-cell *matHeaderCellDef> marketChange </th>
+      <td mat-cell *matCellDef="let element"> {{element.marketChange}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="marketChangePrecent">
+      <th mat-header-cell *matHeaderCellDef> marketChangePrecent </th>
+      <td mat-cell *matCellDef="let element"> {{element.marketChangePrecent}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="marketPrice">
+        <th mat-header-cell *matHeaderCellDef> marketPrice </th>
+        <td mat-cell *matCellDef="let element"> {{element.marketPrice}} </td>
+    </ng-container> -->
+    
+    <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef> Region </th>
+        <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,15,20]">
+  </mat-paginator>
+</div>
+
